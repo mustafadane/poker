@@ -3,7 +3,7 @@ const topHand = require('./topHand')
 
 describe('topHand function', () => {
 
-    it("returns 'Straight Flush' when 5 cards are in sequential order", () => {
+    it("returns 'Straight Flush' when 5 cards are in sequential order and in the same suit", () => {
         const cards1 = ['JS', '0S', '9S', '8S', '7S']
         expect(topHand(cards1)).to.equal('Straight Flush')
 
@@ -37,5 +37,22 @@ describe('topHand function', () => {
 
         const cards2 = ['6D', '5S', '4S', '3S', '2S']
         expect(topHand(cards2)).to.not.equal('Flush')
+    })
+
+    it("returns 'Straight' when 5 cards are in order", () => {
+        const cards1 = ['JD', '0S', '9S', '8S', '7C']
+        expect(topHand(cards1)).to.equal('Straight')
+
+        const cards2 = ['6S', '5S', '4S', '3S', '2S']
+        expect(topHand(cards2)).to.not.equal('Straight')
+    })
+
+    it("return 'Three of a kind' when there are 3 cards of the same kind and other two are different kinds.", () => {
+        const cards1 = ['QC', 'QD', 'QH', '3S', '2S']
+        expect(topHand(cards1)).to.equal('Three of a kind')
+
+        //this should be full house
+        const cards2 = ['QC', 'QD', 'QH', '3S', '3D']
+        expect(topHand(cards2)).to.not.equal('Three of a kind')
     })
 })

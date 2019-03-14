@@ -59,7 +59,27 @@ function topHand (cardCodes) {
         if(isFlush) return 'Flush'
     }
 
-    return 'unknnown yet'
+    //Straight
+    if(uniqueCards.length === 5) {
+        let isStraight = true
+        for(let i = 1; i < uniqueCards.length; i++) {
+            //check if they are in order
+            if(order[uniqueCards[i]] - order[uniqueCards[0]] !== i) {
+                isStraight = false
+                break
+            }
+        }
+
+        if(isStraight) return 'Straight'
+    }
+
+    //Three of a kind
+    if(uniqueCards.length === 3) {
+        return 'Three of a kind'
+    }
+
+
+    return 'unknown yet'
     /* if counts size = 5 then it could be straight flush
             check if they are in order
 

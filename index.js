@@ -16,7 +16,7 @@ async function shuffleCard () {
             throw Error('shuffling was not successful!')
         }
     } catch (err) {
-        console.log("Some error happened during shuffling:", err)
+        console.log("Some error happened during shuffling:", err.message)
     }
 }
 
@@ -54,7 +54,7 @@ async function initializeApp () {
             console.log(card.value, card.suit)
         })
 
-        topHand(cards.map(card => card.code))
+        console.log(topHand(cards.map(card => card.code)))
     }
 
 
