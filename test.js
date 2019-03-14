@@ -7,8 +7,8 @@ describe('topHand function', () => {
         const cards1 = ['JS', '0S', '9S', '8S', '7S']
         expect(topHand(cards1)).to.equal('Straight Flush')
 
-        const cards2 = ['6D', '5S', '4C', '3S', '2S']
-        expect(topHand(cards2)).to.equal('Straight Flush')
+        const cards2 = ['6D', '5S', '4S', '3S', '2S']
+        expect(topHand(cards2)).to.not.equal('Straight Flush')
 
         const cards3 = ['AS', 'KS', 'QS', 'JS', '9S']
         expect(topHand(cards3)).to.not.equal('Straight Flush')
@@ -29,5 +29,13 @@ describe('topHand function', () => {
 
         const cards2 = ['4S', '4C', '4D', 'AH', 'AS']
         expect(topHand(cards2)).to.equal('Full house')
+    })
+
+    it("returns 'Flush' when 5 cards are in the same suit", () => {
+        const cards1 = ['JS', '0S', '2S', '8S', '7S']
+        expect(topHand(cards1)).to.equal('Flush')
+
+        const cards2 = ['6D', '5S', '4S', '3S', '2S']
+        expect(topHand(cards2)).to.not.equal('Flush')
     })
 })
