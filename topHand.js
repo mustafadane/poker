@@ -82,14 +82,14 @@ function topHand (cardCodes) {
         return 'Three of a kind'
     }
 
+    //One pair
+    if(uniqueCards.length === 4) {
+        return 'One pair'
+    }
 
+    //Otherwise, return high card.
 
-    return 'unknown yet'
-    /* if counts size = 5 then it could be straight flush
-            check if they are in order
-
-    */
-
+    return 'High card'
 
 }
 

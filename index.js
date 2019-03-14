@@ -1,7 +1,7 @@
 const axios = require("axios");
 const topHand = require('./topHand')
 
-console.log('Welcome to my Poker App || Mustafa Dane')
+console.log('Welcome to my Poker App by Mustafa Dane\n')
 
 
 async function shuffleCard () {
@@ -48,16 +48,14 @@ async function initializeApp () {
     const cards = await draw(deckId)
 
     if (cards) {
-        console.log("Here is the cards drawn:\n")
+        console.log("Here are the cards drawn:\n")
         console.log('Value | Suit')
         cards.forEach(card => {
             console.log(card.value, card.suit)
         })
-
+        console.log('\nYour top hand is:\n')
         console.log(topHand(cards.map(card => card.code)))
     }
-
-
 
 }
 
