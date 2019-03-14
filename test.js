@@ -55,4 +55,13 @@ describe('topHand function', () => {
         const cards2 = ['QC', 'QD', 'QH', '3S', '3D']
         expect(topHand(cards2)).to.not.equal('Three of a kind')
     })
+
+    it("return 'Two pair' when there are 2 pairs", () => {
+        const cards1 = ['QC', 'QD', '3H', '3S', '2S']
+        expect(topHand(cards1)).to.equal('Two pair')
+
+        //this should be Three of a kind
+        const cards2 = ['QC', 'QD', 'QH', '3S', '2S']
+        expect(topHand(cards2)).to.not.equal('Two pair')
+    })
 })

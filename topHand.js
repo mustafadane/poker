@@ -73,10 +73,15 @@ function topHand (cardCodes) {
         if(isStraight) return 'Straight'
     }
 
-    //Three of a kind
+    //Three of a kind or Two Pair
     if(uniqueCards.length === 3) {
+
+        for(let i = 0; i < uniqueCards.length; i++) {
+            if(counts[uniqueCards[i]] === 2) return 'Two pair'
+        }
         return 'Three of a kind'
     }
+
 
 
     return 'unknown yet'
