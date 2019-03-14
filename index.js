@@ -22,7 +22,13 @@ async function shuffleCard () {
 async function draw (deckId) {
     try {
         const { data } = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=5`)
-        console.log(data)
+
+        //if success, then return the drawn cards.
+        if(data.success) {
+            return data.cards
+        } else {
+            throw Error('drawing was not successfull!')
+        }
     } catch (err) {
         console.log("Some error happened during drawing:", err.message)
     }
@@ -32,9 +38,23 @@ async function draw (deckId) {
 
 //Everything that app does wrapped in this function to be able to use await.
 async function initializeApp () {
+    console.log('Cards are being shuffled...')
     const deckId = await shuffleCard()
-    console.log(deckId)
-    await draw(deckId)
+
+    deckId && console.log('Cards are shuffled.')
+
+    console.log('5 cards are being drawn...')
+
+    const cards = await draw(deckId)
+
+    if (cards) {
+        console.log("Here is the cards drawn:")
+        console.log('Value | Suit')
+        cards.forEach(card => {
+            console.log(card.value, card.suit)
+        })
+
+    }
 }
 
 //Then, app is started by calling this function.
