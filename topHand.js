@@ -32,10 +32,12 @@ function topHand (cardCodes) {
         if(isStraightFlush) return 'Straight Flush'
     }
 
-    //Four of a kind
+    //Four of a kind and full house
     if(uniqueCards.length === 2) {
         if(counts[uniqueCards[0]] === 4 || counts[uniqueCards[1]] === 4) {
             return 'Four of a kind'
+        } else if (counts[uniqueCards[0]] === 3 || counts[uniqueCards[1]] === 3) {
+            return 'Full house'
         }
     }
 

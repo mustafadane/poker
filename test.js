@@ -22,4 +22,12 @@ describe('topHand function', () => {
         const cards2 = ['4S', '4C', '4D', 'AH', 'AS']
         expect(topHand(cards2)).to.not.equal('Four of a kind')
     })
+
+    it("returns 'Full house' when there are 3 card of the same kind and 2 of another kind", () => {
+        const cards1 = ['4S', '4C', '4D', '4H', 'AS']
+        expect(topHand(cards1)).to.not.equal('Full house')
+
+        const cards2 = ['4S', '4C', '4D', 'AH', 'AS']
+        expect(topHand(cards2)).to.equal('Full house')
+    })
 })
